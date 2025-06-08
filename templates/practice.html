@@ -1,0 +1,183 @@
+{% extends "base.html" %}
+
+{% block title %}Practice Expressions - {{ super() }}{% endblock %}
+
+{# Page-specific styles #}
+{% block head_extra %}
+    {{ super() }} {# Include styles from base.html's head_extra #}
+    <style>
+        .practice-container { display: flex; flex-wrap: wrap; gap: 30px; align-items: flex-start; margin-top: 25px; }
+        .camera-section, .detection-section { 
+            border: 1px solid #e0e0e0; 
+            padding: 25px; /* Increased padding */
+            border-radius: var(--border-radius-std); 
+            background-color: #ffffff; 
+            box-shadow: var(--card-shadow);
+            flex: 1; 
+            min-width: 300px; /* Ensure they don't get too small */
+            display: flex;
+            flex-direction: column;
+        }
+        .camera-section h2, .detection-section h2 { 
+            margin-top: 0; 
+            margin-bottom: 20px; /* More space below heading */
+            font-size: 1.7em; /* Larger heading */
+            color: var(--primary-blue); 
+            border-bottom: 2px solid #0056b3; /* Stronger border */
+            padding-bottom: 10px; 
+        }
+        #webcam { 
+            display: block; 
+            border: 2px solid #ddd; /* More prominent border */
+            max-width: 100%; 
+            height: auto; 
+            background-color: #e9ecef; /* Lighter placeholder */
+            border-radius: var(--border-radius-std); 
+            margin-bottom: 10px; /* Space below webcam */
+        }
+        #canvas { display: none; }
+
+        .controls { 
+            margin-bottom: 25px; 
+            background-color: #e9ecef; /* Lighter background for controls */
+            padding: 20px; 
+            border-radius: var(--border-radius-std); 
+            border: 1px solid #ced4da;
+            display: flex;
+            align-items: center;
+            gap: 15px; /* Space between control elements */
+        }
+        .controls label { font-weight: 500; color: #333; margin-bottom: 0; } /* Removed left margin */
+        .controls button, .controls select { 
+            padding: 0.5rem 1rem; /* Bootstrap .btn padding */
+            font-size: 1em; 
+            border-radius: var(--border-radius-std); 
+            border: 1px solid #ced4da; 
+            cursor: pointer; 
+        }
+        .controls button { background-color: var(--primary-blue); color: white; border-color: var(--primary-blue); }
+        .controls button:hover { background-color: var(--primary-blue-darker); border-color: var(--primary-blue-darker); }
+        .controls select { background-color: white; min-width: 180px;}
+
+        #instructionArea { 
+            margin-top: 0; /* Removed top margin as controls have bottom margin */
+            margin-bottom: 25px; 
+            padding: 15px 20px; 
+            background-color: #d1ecf1; /* Bootstrap info light */
+            border-left: 5px solid #17a2b8; /* Bootstrap info */
+            color: #0c5460; /* Bootstrap info dark text */
+            border-radius: var(--border-radius-std); 
+            font-size: 1.1em;
+            font-weight: 500;
+        }
+        #cameraStatus { margin-top: 15px; color: #5a6268; font-style: italic; }
+
+        #detectionResult { 
+            text-align: center; 
+            padding: 20px; /* Increased padding */
+            border-radius: var(--border-radius-std);
+            transition: border-color 0.3s ease, background-color 0.3s ease;
+            flex-grow: 1; /* Make it fill space */
+            display: flex;
+            flex-direction: column;
+            justify-content: center; /* Center content vertically */
+        }
+        
+        /* Feedback borders on the detectionResult div itself */
+        #detectionResult.feedback-correct { border: 3px solid #28a745; background-color: #d4edda;}
+        #detectionResult.feedback-incorrect { border: 3px solid #dc3545; background-color: #f8d7da;}
+
+        /* Confidence Bar (Optional UI) */
+        .confidence-bar-container {
+            width: 80%;
+            margin: 15px auto 5px;
+            background-color: #e9ecef;
+            border-radius: 5px;
+            height: 10px;
+            overflow: hidden;
+            border: 1px solid #ccc;
+        }
+        .confidence-bar-fill {
+            height: 100%;
+            width: 0%; /* To be set by JS */
+            background-color: var(--primary-blue);
+            border-radius: 4px 0 0 4px; /* Rounded only on left if full */
+            transition: width 0.3s ease-in-out;
+        }
+        #confidenceText {
+            font-size: 0.9em;
+            color: #555;
+        }
+
+    </style>
+{% endblock %}
+
+
+{% block content %}
+<section class="site-section">
+  <div class="container">
+    <div class="row mb-4">
+        <div class="col-12 text-center">
+            <h1 class="mb-3" style="font-weight: 600; color: var(--primary-blue);">Practice Expressions</h1>
+            <p class="lead">Activate your camera, select a target emotion if you wish, and get real-time feedback on your expressions!</p>
+        </div>
+    </div>
+
+    <div class="row justify-content-center">
+      <div class="col-lg-10 col-md-12">
+        {# Controls Area #}
+        <div class="controls justify-content-center">
+            <button id="startStopButton" class="btn btn-lg"><i class="fas fa-video"></i> Start Camera</button>
+            <label for="targetEmotionSelect">Practice Target:</label>
+            <select id="targetEmotionSelect" class="form-control form-control-lg">
+                <option value="">-- Freestyle --</option>
+                <option value="Happy">Happy</option>
+                <option value="Sad">Sad</option>
+                <option value="Angry">Angry</option>
+                <option value="Surprise">Surprise</option>
+                <option value="Fear">Fear</option>
+                <option value="Disgust">Disgust</option>
+                <option value="Neutral">Neutral</option>
+            </select>
+        </div>
+
+        {# Instruction Area #}
+         <div id="instructionArea" class="text-center">
+             <p>Select a target emotion above or practice freely by making different faces!</p>
+         </div>
+
+        {# Main Practice Area (Camera and Detection) #}
+        <div class="practice-container">
+            <div class="camera-section">
+                <h2><i class="fas fa-camera-retro mr-2"></i>Your Camera</h2>
+                <video id="webcam" autoplay playsinline width="640" height="480" style="display:none;"></video>
+                <canvas id="canvas" width="640" height="480"></canvas> {# Hidden canvas #}
+                 <p id="cameraStatus">Camera is off. Click "Start Camera".</p>
+            </div>
+
+            <div class="detection-section">
+                <h2><i class="fas fa-smile-beam mr-2"></i>Detected Emotion</h2>
+                <div id="detectionResult">
+                    <div id="emotionLabel">Detection stopped.</div>
+                    <img id="emotionEmoji" src="#" alt="Detected emotion emoji" style="display: none;">
+                    {# Optional Confidence Bar Structure #}
+                    {#
+                    <div class="confidence-bar-container mt-3" style="display: none;">
+                        <div class="confidence-bar-fill" id="confidenceFill"></div>
+                    </div>
+                    <div id="confidenceText" style="display: none;">Confidence: 0%</div>
+                    #}
+                </div>
+            </div>
+        </div>
+      </div> {# End col-10 #}
+    </div> {# End row #}
+  </div> {# End container #}
+</section> {# End site-section #}
+{% endblock %}
+
+
+{% block body_scripts %}
+    {{ super() }}
+    <script src="{{ url_for('static', filename='js/practice.js') }}"></script>
+{% endblock %}

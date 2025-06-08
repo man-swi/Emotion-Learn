@@ -1,0 +1,99 @@
+{% extends "base.html" %}
+
+{% block title %}Learn Emotions - {{ super() }}{% endblock %}
+
+{% block head_extra %}
+    {{ super() }}
+    <style>
+        /* Styles for visual emotion selectors (if implemented in HTML directly) */
+        .emotion-selector-visual {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            justify-content: center;
+            margin-bottom: 30px;
+        }
+        .emotion-selector-visual .btn-emotion {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 10px 15px;
+            border: 1px solid #ddd;
+            border-radius: var(--border-radius-std);
+            cursor: pointer;
+            transition: all 0.2s ease-in-out;
+            background-color: #fff;
+            min-width: 100px;
+        }
+        .emotion-selector-visual .btn-emotion:hover {
+            background-color: #e9ecef;
+            border-color: #ccc;
+            transform: translateY(-2px);
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        .emotion-selector-visual .btn-emotion img {
+            width: 30px;
+            height: 30px;
+            margin-bottom: 5px;
+        }
+        .emotion-selector-visual .btn-emotion.active {
+            background-color: var(--primary-blue);
+            color: white;
+            border-color: var(--primary-blue);
+        }
+        .emotion-selector-visual .btn-emotion.active img {
+            filter: brightness(0) invert(1); /* Make emoji white if background is dark */
+        }
+    </style>
+{% endblock %}
+
+{% block content %}
+<section class="site-section">
+  <div class="container">
+    <div class="row justify-content-center mb-4">
+      <div class="col-md-10 text-center">
+        <h1 class="mb-4" style="font-weight: 600; color: var(--primary-blue);">Explore Emotions</h1>
+        <p class="lead">Select an emotion to discover its description, key facial features, example images, and sound cues.</p>
+        
+        <div id="emotionSelectContainer" class="mt-4 justify-content-center">
+            <label for="emotionSelect" class="mr-2 h5">Choose Emotion:</label>
+            <select id="emotionSelect" class="form-control form-control-lg d-inline-block" style="width: auto; min-width: 250px;">
+                <option value="">-- Please Select an Emotion --</option>
+                {% for emotion in emotions %}
+                    <option value="{{ emotion }}">{{ emotion }}</option>
+                {% endfor %}
+            </select>
+        </div>
+      </div>
+    </div>
+
+    {# Placeholder for visual emotion selectors - could be populated by JS or statically #}
+    {# 
+    <div class="row justify-content-center">
+        <div class="col-md-12">
+            <div id="visualEmotionSelectorArea" class="emotion-selector-visual mb-4">
+                Populated by learn.js if this approach is taken
+            </div>
+        </div>
+    </div>
+    #}
+
+    <div class="row justify-content-center">
+        <div class="col-lg-10 col-md-12">
+             <div id="learnContent" class="emotion-card-container">
+                 <p class="text-center text-muted" style="font-size: 1.1em;">Select an emotion above to begin your exploration.</p>
+                 {# learn.js will replace this content #}
+             </div>
+         </div>
+     </div>
+
+  </div>
+</section>
+{% endblock %}
+
+
+{% block body_scripts %}
+    {{ super() }}
+    {# Magnific Popup JS is already in base.html, ensure it's loaded before learn.js if learn.js uses it #}
+    <script src="{{ url_for('static', filename='js/learn.js') }}"></script>
+{% endblock %}

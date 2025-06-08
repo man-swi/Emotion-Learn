@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>{% block title %}EmotionLearn{% endblock %}</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900" rel="stylesheet">
+    
+    {# Original Font Awesome 4.7 - Keep if you don't want to switch to FA5 #}
+    {# <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"> #}
+    
+    {# Added Font Awesome 5 for more icon choices - Solid icons #}
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/animate.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/owl.carousel.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/owl.theme.default.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/magnific-popup.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap-datepicker.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/jquery.timepicker.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/flaticon.css') }}">
+    
+    {# Main template style - assuming this is the Colorlib theme's primary CSS #}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    
+    {# Your custom styles - loaded after theme styles for overrides #}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/custom-style.css') }}">
+
+    {% block head_extra %}
+        {# --- STYLES FOR NAVBAR LINK VISIBILITY & BODY PADDING --- #}
+        <style>
+            body { 
+                padding-top: 75px; /* Adjusted for potentially slightly taller navbar with branding */
+                background-color: #f8f9fa; /* Light gray background for overall app */
+            } 
+
+            /* Initial State (Dark Background) - from your template */
+            .ftco-navbar-light#ftco-navbar .navbar-nav > .nav-item > .nav-link { color: rgba(255, 255, 255, 0.85) !important; font-weight: 500; }
+            .ftco-navbar-light#ftco-navbar .navbar-nav > .nav-item.active > a,
+            .ftco-navbar-light#ftco-navbar .navbar-nav > .nav-item > .nav-link:hover { color: #ffffff !important; }
+            .ftco-navbar-light#ftco-navbar .navbar-brand { /* Ensure brand is also white initially */
+                color: #ffffff !important;
+            }
+            .ftco-navbar-light#ftco-navbar .navbar-brand span { color: #ffffff !important; }
+            .ftco-navbar-light#ftco-navbar .navbar-toggler .fa-bars { color: rgba(255, 255, 255, 0.8) !important; }
+            .ftco-navbar-light#ftco-navbar .navbar-toggler { /* Make toggler more visible */
+                border-color: rgba(255, 255, 255, 0.3) !important;
+            }
+
+
+            /* Scrolled State (Light Background) - from your template */
+            .ftco-navbar-light.scrolled#ftco-navbar {
+                background: #ffffff !important; /* Ensure scrolled navbar has a solid white background */
+                box-shadow: 0 2px 10px rgba(0,0,0,0.1); /* Add shadow to scrolled navbar */
+            }
+            .ftco-navbar-light.scrolled#ftco-navbar .navbar-nav > .nav-item > .nav-link { color: #333333 !important; font-weight: 500; }
+            .ftco-navbar-light.scrolled#ftco-navbar .navbar-nav > .nav-item.active > a,
+            .ftco-navbar-light.scrolled#ftco-navbar .navbar-nav > .nav-item > .nav-link:hover { color: #4986fc !important; }
+            .ftco-navbar-light.scrolled#ftco-navbar .navbar-brand { /* Brand color on scroll */
+                 color: #343a40 !important;
+            }
+            .ftco-navbar-light.scrolled#ftco-navbar .navbar-brand span { color: #207ce5 !important; } /* Accent color for 'Learn' part */
+            .ftco-navbar-light.scrolled#ftco-navbar .navbar-toggler .fa-bars { color: rgba(0, 0, 0, 0.7) !important; }
+            .ftco-navbar-light.scrolled#ftco-navbar .navbar-toggler { border-color: rgba(0, 0, 0, 0.1) !important; }
+
+            /* General site section styling */
+            .site-section {
+                padding: 3em 0; /* Reduced from 7em for a less spaced-out feel */
+            }
+            @media (max-width: 767.98px) {
+                .site-section {
+                    padding: 2em 0;
+                }
+            }
+
+        </style>
+    {% endblock %}
+
+</head>
+
+<body>
+
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark fixed-top" id="ftco-navbar">
+     <div class="container">
+       <a class="navbar-brand" href="{{ url_for('index') }}"><i class="fas fa-brain mr-2"></i>Emotion<span>Learn</span></a>
+       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
+         <span class="fa fa-bars"></span> Menu
+       </button>
+
+     <div class="collapse navbar-collapse" id="ftco-nav">
+         <ul class="navbar-nav ml-auto">
+           <li class="nav-item {% if request.endpoint == 'index' %}active{% endif %}"><a href="{{ url_for('index') }}" class="nav-link">Home</a></li>
+           <li class="nav-item {% if request.endpoint == 'learn_page' %}active{% endif %}"><a href="{{ url_for('learn_page') }}" class="nav-link">Learn</a></li>
+           <li class="nav-item {% if request.endpoint == 'practice_page' %}active{% endif %}"><a href="{{ url_for('practice_page') }}" class="nav-link">Practice</a></li>
+           <li class="nav-item {% if request.endpoint == 'quiz_page' %}active{% endif %}"><a href="{{ url_for('quiz_page') }}" class="nav-link">Quiz</a></li>
+       </ul>
+   </div>
+</div>
+</nav>
+<!-- END nav -->
+
+<!-- Main Content Area -->
+<main role="main" class="main-content-area">
+    {% block content %}
+        <!-- Page-specific content goes here -->
+    {% endblock %}
+</main>
+<!-- END Main Content -->
+
+
+<!-- Footer Section -->
+<footer class="ftco-footer ftco-no-pt" style="margin-top: 40px;">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12 text-center">
+        <p>
+          Copyright ©<script>document.write(new Date().getFullYear());</script> All rights reserved | Template by <a href="https://colorlib.com" target="_blank" rel="noopener noreferrer">Colorlib</a>
+        </p>
+         <p>Emotion Learning Tool Functionality Added.</p>
+      </div>
+    </div>
+  </div>
+</footer>
+<!-- END Footer -->
+
+
+<!-- loader -->
+<div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00"/></svg></div>
+
+{# === SCRIPT LINKS === #}
+<script src="{{ url_for('static', filename='js/jquery.min.js') }}"></script>
+<script src="{{ url_for('static', filename='js/jquery-migrate-3.0.1.min.js') }}"></script>
+<script src="{{ url_for('static', filename='js/popper.min.js') }}"></script>
+<script src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>
+<script src="{{ url_for('static', filename='js/jquery.easing.1.3.js') }}"></script>
+<script src="{{ url_for('static', filename='js/jquery.waypoints.min.js') }}"></script>
+<script src="{{ url_for('static', filename='js/jquery.stellar.min.js') }}"></script>
+<script src="{{ url_for('static', filename='js/owl.carousel.min.js') }}"></script>
+<script src="{{ url_for('static', filename='js/jquery.magnific-popup.min.js') }}"></script>
+<script src="{{ url_for('static', filename='js/jquery.animateNumber.min.js') }}"></script>
+<script src="{{ url_for('static', filename='js/bootstrap-datepicker.js') }}"></script>
+<script src="{{ url_for('static', filename='js/scrollax.min.js') }}"></script>
+<script src="{{ url_for('static', filename='js/main.js') }}"></script>
+
+{# === BODY SCRIPTS BLOCK === #}
+{% block body_scripts %}
+{% endblock %}
+
+</body>
+</html>

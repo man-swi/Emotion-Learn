@@ -1,0 +1,6 @@
+Flask 
+tensorflow
+opencv-python-headless  
+pandas
+pygame
+pyttsx3

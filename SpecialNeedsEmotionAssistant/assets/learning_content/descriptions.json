@@ -1,0 +1,64 @@
+{
+  "Happy": {
+    "description": "Happiness is a feeling of joy, pleasure, or contentment. People often smile when they are happy.",
+    "key_features": [
+      "Corners of the mouth pulled up (smile)",
+      "Cheeks raised",
+      "Wrinkles may appear around the eyes ('crow's feet')"
+    ]
+  },
+  "Sad": {
+    "description": "Sadness is feeling unhappy or sorrowful. Sometimes people cry when they are sad.",
+    "key_features": [
+      "Inner corners of eyebrows pulled up and together",
+      "Corners of the mouth pulled down",
+      "Lower lip may tremble or push out (pout)",
+      "Eyes may appear droopy or teary"
+    ]
+  },
+  "Angry": {
+    "description": "Anger is a strong feeling of annoyance, displeasure, or hostility.",
+    "key_features": [
+      "Eyebrows pulled down and together",
+      "Eyes may stare intensely or narrow ('glare')",
+      "Lips pressed firmly together or opened to show teeth",
+      "Jaw may be clenched"
+    ]
+  },
+  "Surprise": {
+    "description": "Surprise is feeling astonished by something unexpected.",
+    "key_features": [
+      "Eyebrows raised high",
+      "Eyes opened wide",
+      "Mouth opened, often forming an 'O' shape",
+      "Jaw dropped slightly"
+    ]
+  },
+  "Neutral": {
+    "description": "Neutral means not feeling strongly one way or another. The face is often relaxed.",
+    "key_features": [
+      "Facial muscles relaxed",
+      "Mouth closed or slightly parted naturally",
+      "Eyebrows in a resting position",
+      "No strong emotional indicators"
+    ]
+  },
+  "Fear": {
+    "description": "Fear is feeling afraid or worried that something dangerous or unpleasant might happen.",
+    "key_features": [
+       "Eyebrows raised and pulled together",
+       "Upper eyelids raised, lower eyelids tensed",
+       "Eyes wide, showing more white above the iris",
+       "Mouth corners pulled back horizontally, lips may be stretched"
+    ]
+   },
+   "Disgust": {
+    "description": "Disgust is a feeling of revulsion or strong disapproval aroused by something unpleasant or offensive.",
+    "key_features": [
+        "Nose wrinkled",
+        "Upper lip raised",
+        "Eyebrows lowered",
+        "Cheeks may be raised"
+    ]
+   }
+}

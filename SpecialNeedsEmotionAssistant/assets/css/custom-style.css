@@ -1,0 +1,295 @@
+/* START OF FILE custom-style.css */
+
+:root {
+    --primary-blue: #007bff; /* Bootstrap primary blue */
+    --primary-blue-darker: #0056b3;
+    --accent-purple: #6f42c1; /* Bootstrap purple */
+    --light-gray-bg: #f8f9fa; /* Bootstrap light gray */
+    --card-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    --border-radius-std: .35rem; /* Slightly more rounded than default bootstrap */
+}
+
+body {
+    font-family: "Poppins", sans-serif; /* Ensure Poppins is used */
+    line-height: 1.6;
+    /* margin: 0; remove default margin if body padding-top handles navbar spacing */
+    /* background-color: var(--light-gray-bg); Already in base.html */
+    color: #333;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    color: #343a40; /* Darker headings for better contrast */
+    font-weight: 500;
+}
+
+a {
+    color: var(--primary-blue);
+    text-decoration: none;
+}
+
+a:hover {
+    color: var(--primary-blue-darker);
+    text-decoration: none; /* Often preferred over underline */
+}
+
+/* --- General Button Styling --- */
+.btn {
+    border-radius: var(--border-radius-std);
+    padding: 0.5rem 1rem;
+    font-weight: 500;
+    transition: all 0.2s ease-in-out;
+}
+.btn-primary {
+    background-color: var(--primary-blue);
+    border-color: var(--primary-blue);
+}
+.btn-primary:hover {
+    background-color: var(--primary-blue-darker);
+    border-color: var(--primary-blue-darker);
+}
+.btn i, .btn .fas, .btn .far, .btn .fab { /* Font Awesome 5 icon spacing */
+    margin-right: 0.4em;
+}
+
+
+/* --- Learn Page Specific Styles --- */
+#emotionSelectContainer {
+    display: flex;
+    align-items: center;
+    gap: 15px; /* Spacing between label and select */
+    margin-bottom: 20px;
+}
+
+#emotionSelect {
+    min-width: 250px;
+    border-radius: var(--border-radius-std);
+}
+
+.emotion-card-container {
+    background-color: #ffffff;
+    padding: 25px;
+    border-radius: var(--border-radius-std);
+    box-shadow: var(--card-shadow);
+    margin-top: 20px;
+}
+
+.emotion-card-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 15px;
+}
+
+.emotion-card-emoji {
+    width: 50px;
+    height: 50px;
+    margin-right: 15px;
+    object-fit: contain;
+}
+
+.emotion-card-header h2 {
+    margin: 0;
+    font-size: 2.2em;
+    color: var(--primary-blue);
+}
+
+.emotion-description {
+    font-size: 1.1em;
+    line-height: 1.7;
+    margin-bottom: 20px;
+}
+
+.action-button-learn { /* Specific class for learn page buttons */
+    padding: 10px 20px;
+    font-size: 1em;
+    margin-right: 10px;
+    margin-bottom: 15px; /* Spacing below button */
+    display: inline-flex; /* For icon alignment */
+    align-items: center;
+}
+.action-button-learn i {
+    margin-right: 8px;
+}
+
+.key-features-list {
+    list-style: none;
+    padding-left: 0;
+    margin-top: 10px;
+    margin-bottom: 25px;
+}
+.key-features-list li {
+    padding: 8px 0;
+    display: flex;
+    align-items: center;
+    font-size: 1.05em;
+    border-bottom: 1px dashed #eee;
+}
+.key-features-list li:last-child {
+    border-bottom: none;
+}
+.key-features-list li i { /* For FontAwesome checkmarks */
+    color: #28a745; /* Bootstrap success green */
+    margin-right: 10px;
+    font-size: 1.2em;
+}
+
+.reference-sound-section {
+    display: flex;
+    align-items: center;
+    gap: 15px; /* Space between emoji and sound button */
+    margin-bottom: 25px;
+}
+.reference-sound-section .emoji-container img {
+    width: 70px;
+    height: 70px;
+    object-fit: contain;
+}
+
+.example-images-gallery {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px; /* Spacing between images */
+    margin-top: 10px;
+}
+.example-images-gallery .gallery-item {
+    flex: 1 1 180px; /* Flex-grow, flex-shrink, flex-basis */
+    max-width: 200px; /* Max width for each image container */
+}
+.example-images-gallery .gallery-item img {
+    width: 100%;
+    height: auto;
+    border-radius: var(--border-radius-std);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.07);
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+    cursor: pointer;
+}
+.example-images-gallery .gallery-item img:hover {
+    transform: scale(1.05);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.15);
+}
+
+/* Styles for Magnific Popup (if you use custom styling beyond its defaults) */
+.mfp-figure {
+    box-shadow: 0 0 30px rgba(0,0,0,0.3); /* Softer shadow for popup image */
+}
+
+
+/* --- Practice Page Specific Styles --- */
+/* Styles are mostly in practice.html, but global improvements here */
+.practice-container .camera-section, 
+.practice-container .detection-section {
+    background-color: #ffffff;
+    border-radius: var(--border-radius-std);
+    box-shadow: var(--card-shadow);
+    padding: 25px; /* Increased padding */
+}
+
+.practice-container h2 {
+    font-size: 1.6em;
+    color: var(--primary-blue);
+}
+
+#emotionLabel {
+    font-size: 1.4em; /* Larger detected emotion text */
+    font-weight: 600;
+    min-height: 1.8em;
+    color: #333;
+    transition: color 0.3s ease;
+}
+#emotionEmoji {
+    max-width: 120px; /* Slightly larger emoji */
+    max-height: 120px;
+    margin-top: 10px;
+    transition: transform 0.2s ease-in-out;
+}
+#detectionResult.feedback-correct #emotionLabel {
+    color: #28a745; /* Bootstrap success green */
+}
+#detectionResult.feedback-incorrect #emotionLabel {
+    color: #dc3545; /* Bootstrap danger red */
+}
+
+/* Optional: Add a subtle animation to emoji when it changes */
+#emotionEmoji.emoji-pop {
+    animation: popEffect 0.3s ease-out;
+}
+@keyframes popEffect {
+    0% { transform: scale(0.8); opacity: 0.5; }
+    70% { transform: scale(1.1); }
+    100% { transform: scale(1); opacity: 1; }
+}
+
+
+/* --- Quiz Page Specific Styles --- */
+/* Styles are mostly in quiz.html, but global improvements here */
+#questionContent {
+    background-color: #ffffff;
+    border-radius: var(--border-radius-std);
+    box-shadow: var(--card-shadow);
+    padding: 30px;
+}
+#questionContent h3 {
+    font-size: 1.75em;
+    margin-bottom: 20px;
+    color: var(--primary-blue);
+}
+
+.answer-button {
+    background-color: #e9ecef; /* Light gray for default */
+    color: #333;
+    border: 1px solid #ced4da;
+    transition: background-color 0.2s ease, border-color 0.2s ease, transform 0.1s ease;
+    font-weight: 500;
+}
+.answer-button:hover:not(:disabled) {
+    background-color: #d3d9df;
+    border-color: #adb5bd;
+    transform: translateY(-2px);
+}
+.answer-button:disabled {
+    opacity: 0.8; /* Keep visible but non-interactive */
+}
+.answer-button.highlight-correct {
+    background-color: #d4edda !important; /* Bootstrap success light */
+    color: #155724 !important;
+    border-color: #c3e6cb !important;
+}
+.answer-button.highlight-incorrect {
+    background-color: #f8d7da !important; /* Bootstrap danger light */
+    color: #721c24 !important;
+    border-color: #f5c6cb !important;
+}
+
+#feedbackArea {
+    font-size: 1.1em;
+    transition: background-color 0.3s ease;
+}
+#feedbackArea img.feedback-emoji {
+    width: 40px;
+    height: 40px;
+}
+
+/* General page container from Colorlib template */
+.ftco-section, .site-section {
+    background: var(--light-gray-bg); /* Ensure consistent background for sections */
+}
+.container { /* Ensure container is not overly wide on large screens */
+    max-width: 1140px; 
+}
+
+/* Footer styling (from Colorlib) - adjust if needed */
+.ftco-footer {
+    /* color: rgba(255, 255, 255, 0.8); Ensure text is readable on gradient */
+    padding: 3em 0; /* Reduced padding */
+}
+.ftco-footer p {
+     color: rgba(255, 255, 255, 0.9);
+}
+.ftco-footer a {
+     color: #fff; /* Brighter links in footer */
+     font-weight: 500;
+}
+.ftco-footer a:hover {
+    color: #e0e0e0;
+}

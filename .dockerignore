@@ -1,0 +1,28 @@
+# .dockerignore
+
+# Git files
+.git
+.gitignore
+
+# Python cache and virtual environments
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.venv/
+venv/
+env/
+
+# IDE folders / settings
+.vscode/
+.idea/
+
+# Logs and temporary files
+logs/
+*.log
+tempCodeRunnerFile.py
+*.ipynb_checkpoints
+
+# Optional: Large datasets if not needed inside the container
+# fer2013.csv
+# model_checkpoint_weighted.keras

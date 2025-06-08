@@ -1,0 +1,74 @@
+{% extends "base.html" %}
+
+{% block title %}Home - EmotionLearn{% endblock %}
+
+{% block head_extra %}
+    {{ super() }}
+    <style>
+        .home-card .card-title {
+            font-size: 1.5rem; /* Slightly larger card titles */
+            color: var(--primary-blue);
+            margin-bottom: 0.75rem;
+        }
+        .home-card .card-text {
+            font-size: 1rem;
+            color: #555;
+            min-height: 60px; /* Ensure cards have similar text height */
+        }
+        .home-card .btn {
+            font-size: 1.05rem;
+            padding: 0.6rem 1.2rem;
+        }
+        .ftco-section .lead {
+            font-size: 1.25rem;
+            color: #4a4a4a;
+        }
+    </style>
+{% endblock %}
+
+{% block content %}
+<section class="ftco-section section-hero">
+    <div class="container">
+        <div class="row justify-content-center mb-5 pb-3">
+            <div class="col-md-10 text-center heading-section ftco-animate">
+                <h1 class="mb-4" style="font-weight: 700; color: #2c3e50;">Welcome to EmotionLearn!</h1>
+                <p class="lead">Your interactive guide to understanding and recognizing facial emotions. Choose an activity below to begin your journey.</p>
+            </div>
+        </div>
+        <div class="row justify-content-center">
+            <div class="col-md-4 mb-4 ftco-animate">
+                <div class="card h-100 text-center shadow-sm home-card">
+                    <div class="card-body d-flex flex-column">
+                        <h5 class="card-title"><i class="fas fa-book-open mr-2"></i>Learn About Emotions</h5>
+                        <p class="card-text">Explore different emotions, see examples, hear sound cues, and understand key facial features.</p>
+                        <a href="{{ url_for('learn_page') }}" class="btn btn-primary mt-auto"><i class="fas fa-arrow-right mr-1"></i>Go to Learn</a>
+                    </div>
+                </div>
+            </div>
+             <div class="col-md-4 mb-4 ftco-animate">
+                <div class="card h-100 text-center shadow-sm home-card">
+                    <div class="card-body d-flex flex-column">
+                        <h5 class="card-title"><i class="fas fa-smile-beam mr-2"></i>Practice Expressions</h5>
+                        <p class="card-text">Use your camera to practice making faces and get real-time feedback on detected emotions.</p>
+                        <a href="{{ url_for('practice_page') }}" class="btn btn-success mt-auto"><i class="fas fa-arrow-right mr-1"></i>Go to Practice</a>
+                    </div>
+                </div>
+            </div>
+             <div class="col-md-4 mb-4 ftco-animate">
+                <div class="card h-100 text-center shadow-sm home-card">
+                    <div class="card-body d-flex flex-column">
+                        <h5 class="card-title"><i class="fas fa-question-circle mr-2"></i>Emotion Quiz</h5>
+                        <p class="card-text">Test your knowledge by identifying emotions from various images in a fun quiz format.</p>
+                        <a href="{{ url_for('quiz_page') }}" class="btn btn-info mt-auto"><i class="fas fa-arrow-right mr-1"></i>Go to Quiz</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+         <div class="row justify-content-center mt-5">
+             <div class="col-md-8 text-center ftco-animate">
+                <p class="text-muted"><small>Emotion detection powered by a deep learning model. <br>This tool is for educational and assistive purposes.</small></p>
+             </div>
+         </div>
+    </div>
+</section>
+{% endblock %}
