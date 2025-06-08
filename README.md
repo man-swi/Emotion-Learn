@@ -37,7 +37,7 @@ The platform supports **seven core emotions**: Angry, Disgust, Fear, Happy, Sad,
 
 ### Practice Module
 
-![Practice Page](!\[Image]\(https://github.com/user-attachments/assets/8dac5948-672e-42fe-a60a-d59561b430fb\))
+![Practice Page] ![Image](https://github.com/user-attachments/assets/af715ada-1bcd-431c-9f4a-6d820c0651ca)
 ![Image](https://github.com/user-attachments/assets/4eec7cb1-061e-45e0-aac8-b87bfcb37a14)
 ![Image](https://github.com/user-attachments/assets/0e197965-a427-42d0-a313-f711239d0a2e)
 
