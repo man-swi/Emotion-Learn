@@ -28,18 +28,26 @@ The tool is modular and offers a friendly interface with three core modules:
 
 ---
 
-## 📸 Screenshots
+## Outputs
 
 ### Home Interface
-![Home Page](images/home.png)
+![Home Page](![Image](https://github.com/user-attachments/assets/2b3abf74-8cd1-4506-bce1-b3511d3499eb))
 
 ### Learning Module
 Explore detailed information on each emotion.
-![Learn Page](images/learn.png)
+![Learn Page](![Image](https://github.com/user-attachments/assets/cfdbd5da-7dac-4d39-8253-b6b3d4b2b5df))
+![Image](https://github.com/user-attachments/assets/8457847a-b0dc-45a3-a33f-354289b13103)
 
 ### Quiz Module
 Identify emotions shown in various images.
-![Quiz Page](images/quiz.png)
+![Quiz Page](![Image](https://github.com/user-attachments/assets/b417d322-6669-4987-969f-494e6b602f8f))
+![Image](https://github.com/user-attachments/assets/96b37d79-789a-4c28-b909-967a76040206)
+
+### Practice Module
+Practice different emotions in Real time 
+![Practice Page](![Image](https://github.com/user-attachments/assets/8dac5948-672e-42fe-a60a-d59561b430fb))
+![Image](https://github.com/user-attachments/assets/4eec7cb1-061e-45e0-aac8-b87bfcb37a14)
+![Image](https://github.com/user-attachments/assets/0e197965-a427-42d0-a313-f711239d0a2e)
 
 ---
 
