@@ -1,2 +1,32 @@
 *.h5 filter=lfs diff=lfs merge=lfs -text
 *.csv filter=lfs diff=lfs merge=lfs -text
+venv/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.sqlite3
+*.log
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*.so
+
+# Virtual environments
+venv/
+ENV/
+env/
+
+# Dataset and model weights
+*.h5
+*.keras
+*.csv
+
+# VSCode settings
+.vscode/
+
+# Jupyter checkpoint
+.ipynb_checkpoints
+
+# Logs
+*.log
