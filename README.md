@@ -23,21 +23,20 @@ The platform supports **seven core emotions**: Angry, Disgust, Fear, Happy, Sad,
 
 ### Home Interface
 
-![Home Page](!\[Image]\(https://github.com/user-attachments/assets/2b3abf74-8cd1-4506-bce1-b3511d3499eb\))
+![Image](https://github.com/user-attachments/assets/f0f2ed49-fcb6-47e3-9343-66aa6099e9e1)
 
 ### Learning Module
 
-![Learn Page](!\[Image]\(https://github.com/user-attachments/assets/cfdbd5da-7dac-4d39-8253-b6b3d4b2b5df\))
+![Image](https://github.com/user-attachments/assets/fe4c50c0-96c7-4070-9170-855fe84000c2)
 ![Image](https://github.com/user-attachments/assets/8457847a-b0dc-45a3-a33f-354289b13103)
 
 ### Quiz Module
 
-![Quiz Page](!\[Image]\(https://github.com/user-attachments/assets/b417d322-6669-4987-969f-494e6b602f8f\))
 ![Image](https://github.com/user-attachments/assets/96b37d79-789a-4c28-b909-967a76040206)
 
 ### Practice Module
 
-![Practice Page] ![Image](https://github.com/user-attachments/assets/af715ada-1bcd-431c-9f4a-6d820c0651ca)
+![Image](https://github.com/user-attachments/assets/af715ada-1bcd-431c-9f4a-6d820c0651ca)
 ![Image](https://github.com/user-attachments/assets/4eec7cb1-061e-45e0-aac8-b87bfcb37a14)
 ![Image](https://github.com/user-attachments/assets/0e197965-a427-42d0-a313-f711239d0a2e)
 
